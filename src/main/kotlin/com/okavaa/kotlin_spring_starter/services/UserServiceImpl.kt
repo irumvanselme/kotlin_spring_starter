@@ -16,12 +16,9 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import org.springframework.web.multipart.MultipartFile
-import java.lang.Exception
 import java.util.*
 import javax.mail.internet.AddressException
 import javax.mail.internet.InternetAddress
-import javax.validation.constraints.NotEmpty
 
 @Service
 class UserServiceImpl @Autowired constructor(userRepository: IUserRepository) : IUserService {
@@ -52,15 +49,15 @@ class UserServiceImpl @Autowired constructor(userRepository: IUserRepository) : 
     @Transactional
     override fun create(dto: RegisterDTO): User {
         var user = User()
-        val password: String = Utility.encode(dto.password);
+        val password: String = Utility.encode(dto.password)
         if (dto.emailOrPhone?.let { isValidEmailAddress(it) } == true) user.email = dto.emailOrPhone
-        else user.phoneNumber = dto.emailOrPhone;
+        else user.phoneNumber = dto.emailOrPhone
 
         user.role = ERole.USER
         user.fullNames = dto.fullNames
-        user.password = password;
+        user.password = password
 
-        println(Utility.matches(dto.password, password));
+        println(Utility.matches(dto.password, password))
 
         if (!isUnique(user)) throw BadRequestException("The provided emailOrPhone is already used in the app")
         user = userRepository.save(user)

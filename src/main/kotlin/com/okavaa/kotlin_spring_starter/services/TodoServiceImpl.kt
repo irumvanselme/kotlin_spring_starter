@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service
 class TodoServiceImpl(@Autowired var iTodoRepository: ITodoRepository) : ITodoService {
 
     override fun all(): List<Todo> {
-        return iTodoRepository.findAll();
+        return iTodoRepository.findAll()
     }
 
     override fun create(todo: Todo): Todo {
-        return iTodoRepository.save(todo);
+        return iTodoRepository.save(todo)
     }
 }

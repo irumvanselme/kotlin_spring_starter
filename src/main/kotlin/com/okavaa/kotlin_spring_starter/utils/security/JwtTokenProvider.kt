@@ -8,7 +8,6 @@ import org.modelmapper.ModelMapper
 import org.modelmapper.convention.MatchingStrategies
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.security.config.annotation.rsocket.RSocketSecurity
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
@@ -42,7 +41,7 @@ class JwtTokenProvider {
     }
 
     fun getUserIdFromToken(token: String?): Long {
-        val claims: Claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody()
+        val claims: Claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).body
         return claims.subject.toLong()
     }
 

@@ -1,7 +1,6 @@
 package com.okavaa.kotlin_spring_starter.controllers
 
 import com.okavaa.kotlin_spring_starter.models.User
-import com.okavaa.kotlin_spring_starter.repositories.IUserRepository
 import com.okavaa.kotlin_spring_starter.services.IUserService
 import com.okavaa.kotlin_spring_starter.utils.dtos.LoginDTO
 import com.okavaa.kotlin_spring_starter.utils.payload.ApiResponse
@@ -13,9 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.security.web.authentication.AuthenticationFilter
 import org.springframework.web.bind.annotation.*
-import java.lang.Exception
 import javax.validation.Valid
 
 @RestController
@@ -34,7 +31,7 @@ class AuthenticationController @Autowired constructor(
     }
 
     @PostMapping("/login")
-    fun login(@RequestBody dto: @Valid LoginDTO): ResponseEntity<String> {
+    fun login(@RequestBody dto: @Valid LoginDTO): ResponseEntity<JwtAuthenticationResponse> {
         println(dto.login)
         var jwt: String? = null
         val authentication: Authentication =
@@ -45,7 +42,7 @@ class AuthenticationController @Autowired constructor(
         } catch (e: Exception) {
             println(e.message)
         }
-        return ResponseEntity.accepted().body(jwt)
+        return ResponseEntity.accepted().body(JwtAuthenticationResponse(jwt))
     }
 
     @GetMapping("/profile")

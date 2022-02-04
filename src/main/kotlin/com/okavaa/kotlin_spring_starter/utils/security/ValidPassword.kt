@@ -1,7 +1,6 @@
 package com.okavaa.kotlin_spring_starter.utils.security
 
 import javax.validation.Constraint
-import javax.validation.Payload
 import kotlin.reflect.KClass
 
 @MustBeDocumented
@@ -12,7 +11,7 @@ import kotlin.reflect.KClass
     AnnotationTarget.FIELD,
     AnnotationTarget.ANNOTATION_CLASS
 )
-@kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+@Retention(AnnotationRetention.RUNTIME)
 annotation class ValidPassword(
     val message: String = "Invalid Password",
     val groups: Array<KClass<*>> = [],

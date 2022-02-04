@@ -39,7 +39,7 @@ class UsersController(userService: IUserService) {
 
     @GetMapping("/{id}")
     fun byId(@PathVariable id: Long): ResponseEntity<User> {
-        return ResponseEntity.ok(userService.findById(id));
+        return ResponseEntity.ok(userService.findById(id))
     }
 
     @GetMapping("/by-role/{role}")
@@ -49,7 +49,7 @@ class UsersController(userService: IUserService) {
         @PathVariable role: ERole
     ): ResponseEntity<ApiResponse> {
         val pageable: Pageable = Pageable.ofSize(10)
-        return ResponseEntity.ok(ApiResponse.success(userService.byRole(role, pageable)));
+        return ResponseEntity.ok(ApiResponse.success(userService.byRole(role, pageable)))
     }
 
     @PutMapping("/{id}/change-profile-pic")
@@ -57,7 +57,7 @@ class UsersController(userService: IUserService) {
         @PathVariable id: Long, @RequestParam("file") document: MultipartFile
     ): ResponseEntity<ApiResponse> {
         val user: User = userService.findById(id)
-        return ResponseEntity.ok(ApiResponse.success("done"));
+        return ResponseEntity.ok(ApiResponse.success(user))
     }
 
     @PutMapping("/{id}/update-profile")
@@ -65,12 +65,12 @@ class UsersController(userService: IUserService) {
         @PathVariable id: Long, @RequestBody dto: @Valid UpdateProfileDTO
     ): ResponseEntity<ApiResponse> {
         val user: User = userService.findById(id)
-        return ResponseEntity.ok(ApiResponse.success("done"));
+        return ResponseEntity.ok(ApiResponse.success(user))
     }
 
     @PutMapping("/change-password")
     fun changePassword(@RequestBody dto: @Valid ChangePasswordDTO): ResponseEntity<ApiResponse> {
         userService.changePassword(userService.loggedInUser, dto)
-        return ResponseEntity.ok(ApiResponse.success("done"));
+        return ResponseEntity.ok(ApiResponse.success("done"))
     }
 }

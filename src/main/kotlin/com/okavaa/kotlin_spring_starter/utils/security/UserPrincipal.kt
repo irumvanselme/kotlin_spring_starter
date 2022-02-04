@@ -2,16 +2,11 @@ package com.okavaa.kotlin_spring_starter.utils.security
 
 import com.okavaa.kotlin_spring_starter.models.User
 import com.okavaa.kotlin_spring_starter.models.enums.ERole
-import lombok.AllArgsConstructor
-import lombok.Getter
-import lombok.Setter
+
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
-@Getter
-@Setter
-@AllArgsConstructor
 class UserPrincipal(
     var id: Long?,
     var fullNames: String?,
@@ -45,15 +40,15 @@ class UserPrincipal(
     }
 
     override fun getAuthorities(): List<GrantedAuthority> {
-        return _authorities;
+        return _authorities
     }
 
     override fun getPassword(): String {
-        return _password.toString();
+        return _password.toString()
     }
 
     override fun getUsername(): String? {
-        return email;
+        return email
     }
 
     override fun isAccountNonExpired(): Boolean {
@@ -69,6 +64,6 @@ class UserPrincipal(
     }
 
     override fun isEnabled(): Boolean {
-        return true;
+        return true
     }
 }

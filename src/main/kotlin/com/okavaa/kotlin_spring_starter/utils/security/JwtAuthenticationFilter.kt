@@ -1,6 +1,5 @@
 package com.okavaa.kotlin_spring_starter.utils.security
 
-import com.okavaa.kotlin_spring_starter.utils.security.JwtAuthenticationFilter
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

@@ -2,7 +2,6 @@ package com.okavaa.kotlin_spring_starter.utils.security
 
 import com.google.common.base.Joiner
 import org.passay.*
-import java.util.*
 import javax.validation.ConstraintValidator
 import javax.validation.ConstraintValidatorContext
 

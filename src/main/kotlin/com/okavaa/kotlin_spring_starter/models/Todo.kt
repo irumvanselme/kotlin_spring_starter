@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "todos")
-data class Todo(
+open class Todo(
     @Column(name = "title") var title: String, @Column(name = "description") var description: String
 ) : Model() {
 

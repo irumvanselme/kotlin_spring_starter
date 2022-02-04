@@ -18,7 +18,7 @@ interface IUserRepository : JpaRepository<User, Long> {
 
     fun findByRole(role: ERole, pageable: Pageable): Page<User>
 
-    fun findByEmailOrPhoneNumberOrNationalId(email: String, phoneNumber: String, nationalId: String): Optional<User>;
+    fun findByEmailOrPhoneNumberOrNationalId(email: String, phoneNumber: String, nationalId: String): Optional<User>
 
     fun findByEmailOrPhoneNumber(email: String, phoneNumber: String): Optional<User>
 

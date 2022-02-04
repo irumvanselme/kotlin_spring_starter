@@ -18,11 +18,10 @@ open class Model {
     @CreationTimestamp
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "created_at")
-    private val createdAt: LocalDateTime? = null
+    val createdAt: LocalDateTime? = null
 
     @UpdateTimestamp
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "updated_at")
-    private val updatedAt: LocalDateTime? = null
-
+    val updatedAt: LocalDateTime? = null
 }

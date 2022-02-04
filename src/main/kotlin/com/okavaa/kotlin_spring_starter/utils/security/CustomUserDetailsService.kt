@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 import javax.transaction.Transactional
 
 @Service
-open class CustomUserDetailsService @Autowired constructor(userRepository: IUserRepository) : UserDetailsService {
+class CustomUserDetailsService @Autowired constructor(userRepository: IUserRepository) : UserDetailsService {
     private val userRepository: IUserRepository
 
     init {
@@ -19,7 +19,7 @@ open class CustomUserDetailsService @Autowired constructor(userRepository: IUser
     }
 
     @Transactional
-    open fun loadByUserId(id: Long): UserDetails {
+    fun loadByUserId(id: Long): UserDetails {
         val user: User =
             userRepository.findById(id).orElseThrow { UsernameNotFoundException("User not found with id: $id") }
         return UserPrincipal.create(user)
